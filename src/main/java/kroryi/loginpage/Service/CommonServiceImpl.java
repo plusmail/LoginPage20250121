@@ -1,9 +1,13 @@
-package kroryi.loginpage;
+package kroryi.loginpage.Service;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import kroryi.loginpage.Controller.ExampleController;
+import kroryi.loginpage.Controller.ListController;
+import kroryi.loginpage.Controller.LoginController;
+import kroryi.loginpage.Controller.RegisterController;
 
 public class CommonServiceImpl implements CommService{
     private Stage stage;
@@ -54,6 +58,23 @@ public class CommonServiceImpl implements CommService{
         Parent root;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlURL));
         ListController controller;
+        try{
+            root = loader.load();
+            controller = loader.getController();
+            controller.setRoot(root);
+            controller.setStage(stage);
+            stage.setScene(new Scene(root));
+            stage.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showExamplePage(String fxmlURL) {
+        Parent root;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlURL));
+        ExampleController controller;
         try{
             root = loader.load();
             controller = loader.getController();

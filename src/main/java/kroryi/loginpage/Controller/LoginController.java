@@ -1,19 +1,20 @@
-package kroryi.loginpage;
+package kroryi.loginpage.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import kroryi.loginpage.SceneManager;
+import kroryi.loginpage.Service.CommService;
+import kroryi.loginpage.Service.CommonServiceImpl;
+import kroryi.loginpage.Service.LoginService;
+import kroryi.loginpage.Service.LoginServiceImpl;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class LoginController {
     @FXML
@@ -29,7 +30,6 @@ public class LoginController {
     private Scene scene;
     private Parent root;
 
-    private CommService commService;
     private LoginService loginService;
 
     public void setRoot(Parent root) {
@@ -66,13 +66,9 @@ public class LoginController {
     @FXML
     protected void onRegisterBtnClick(ActionEvent event) throws IOException {
         System.out.println("회원가입 버튼 실행");
-        commService = new CommonServiceImpl(stage);
-        commService.showRegisterPage("register-view.fxml");
+//        SceneManager.setPrimaryStage(stage);
+        SceneManager.switchScene("register-view.fxml","회원가입화면");
 
-//        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register-view.fxml")));
-//        stage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
+
     }
 }

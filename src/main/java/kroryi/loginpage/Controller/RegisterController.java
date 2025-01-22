@@ -1,18 +1,20 @@
-package kroryi.loginpage;
+package kroryi.loginpage.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import kroryi.loginpage.SceneManager;
+import kroryi.loginpage.Service.CommService;
+import kroryi.loginpage.Service.CommonServiceImpl;
+import kroryi.loginpage.Dao.Member;
+import kroryi.loginpage.Dao.MyDB;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class RegisterController {
     @FXML private TextField tfNameField;
@@ -71,21 +73,15 @@ public class RegisterController {
     @FXML
     public void onGoToLoginBtnClick(ActionEvent event) throws IOException {
         System.out.println("로그인 페이지로 이동 클릭");
-        CommService commService = new CommonServiceImpl(stage);
-        commService.showLoginPage("login-view.fxml");
-
-//        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
-//        stage = (Stage)((Node)(event.getSource())).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
+        SceneManager.switchScene("login-view.fxml","로그인 화면");
     }
 
     @FXML
     public void onGoToListBtnClick(ActionEvent event){
         System.out.println("목록 페이지로 이동 클릭");
-        CommService commService = new CommonServiceImpl(stage);
-        commService.showListPage("list-view.fxml");
+
+        SceneManager.switchScene("list-view.fxml","목록보기 화면");
+
 
     }
 

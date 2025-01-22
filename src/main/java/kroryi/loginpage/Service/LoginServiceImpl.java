@@ -1,7 +1,8 @@
-package kroryi.loginpage;
+package kroryi.loginpage.Service;
 
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
+import kroryi.loginpage.Dao.MyDB;
 
 public class LoginServiceImpl implements LoginService{
 

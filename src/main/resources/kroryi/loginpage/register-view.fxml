@@ -8,7 +8,11 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="349.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kroryi.loginpage.RegisterController">
+<AnchorPane prefHeight="349.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kroryi.loginpage.Controller.RegisterController">
+   <children>
+      <fx:include source="menu-bar.fxml"/>
+   </children>
+
    <children>
       <Label layoutX="86.0" layoutY="14.0" text="회원가입 화면" textFill="#a12929">
          <font>

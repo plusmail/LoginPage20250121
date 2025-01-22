@@ -1,4 +1,4 @@
-package kroryi.loginpage;
+package kroryi.loginpage.Service;
 
 import javafx.scene.Parent;
 

@@ -1,4 +1,4 @@
-package kroryi.loginpage;
+package kroryi.loginpage.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +11,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import kroryi.loginpage.Service.CommService;
+import kroryi.loginpage.Service.LoginService;
+import kroryi.loginpage.Dao.Member;
+import kroryi.loginpage.Dao.MyDB;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,12 +28,10 @@ public class ListController implements Initializable {
     @FXML private TableColumn<Member, String> tvEmail;
 
 
-
     private Stage stage;
     private Scene scene;
     private Parent root;
 
-    private CommService commService;
     private LoginService loginService;
     private ObservableList<Member> memberData = FXCollections.observableArrayList();
 

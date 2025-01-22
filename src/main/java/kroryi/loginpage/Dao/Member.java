@@ -1,4 +1,4 @@
-package kroryi.loginpage;
+package kroryi.loginpage.Dao;
 
 public class Member {
     private String name, id, pw, email;

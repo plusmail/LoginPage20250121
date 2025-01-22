@@ -1,4 +1,4 @@
-package kroryi.loginpage;
+package kroryi.loginpage.Dao;
 
 import java.util.ArrayList;
 import java.util.List;

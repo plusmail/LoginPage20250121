@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+
+<MenuBar prefHeight="25.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kroryi.loginpage.Controller.MenuController">
+   <menus>
+      <Menu mnemonicParsing="false" text="파일">
+         <items>
+            <MenuItem mnemonicParsing="false" text="열기" />
+            <MenuItem fx:id="close" mnemonicParsing="false" onAction="#handlerExitAction" text="닫기" />
+         </items>
+      </Menu>
+      <Menu mnemonicParsing="false" text="편집">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+         </items>
+      </Menu>
+      <Menu mnemonicParsing="false" text="게시판">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#handlerBoardListAction" text="목록보기" />
+         </items>
+      </Menu>
+      <Menu mnemonicParsing="false" text="도움말">
+         <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+         </items>
+      </Menu>
+   </menus>
+</MenuBar>
