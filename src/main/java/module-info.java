@@ -1,6 +1,7 @@
 module kroryi.loginpage {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens kroryi.loginpage to javafx.fxml;

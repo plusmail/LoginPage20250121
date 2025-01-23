@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import kroryi.loginpage.Service.CommService;
@@ -51,6 +52,39 @@ public class ListController implements Initializable {
         tvPw.setCellValueFactory(new PropertyValueFactory<>("pw"));
         tvEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
+        tvName.setCellFactory(TextFieldTableCell.forTableColumn());
+        tvId.setCellFactory(TextFieldTableCell.forTableColumn());
+        tvPw.setCellFactory(TextFieldTableCell.forTableColumn());
+        tvEmail.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        tvName.setOnEditCommit(event -> {
+            Member member = event.getRowValue();
+            member.setName(event.getNewValue());
+            updateMemberDB(member);
+        });
+
+        tvId.setOnEditCommit(event -> {
+            Member member = event.getRowValue();
+            member.setId(event.getNewValue());
+            updateMemberDB(member);
+
+        });
+
+        tvPw.setOnEditCommit(event -> {
+            Member member = event.getRowValue();
+            member.setPw(event.getNewValue());
+            updateMemberDB(member);
+
+        });
+
+        tvEmail.setOnEditCommit(event -> {
+            Member member = event.getRowValue();
+            member.setEmail(event.getNewValue());
+            updateMemberDB(member);
+
+        });
+
+
         memberData.clear();
         memberData.addAll(MyDB.getListMember());
         tableView.setItems(memberData);
@@ -68,5 +102,14 @@ public class ListController implements Initializable {
             }
 
         }
+        System.out.println(MyDB.getListMember().toString());
+    }
+
+    private void updateMemberDB(Member member){
+
+        MyDB.updateMember(member);
+//        memberData.clear();
+//        memberData.addAll(MyDB.getListMember());
+//        tableView.setItems(memberData);
     }
 }
