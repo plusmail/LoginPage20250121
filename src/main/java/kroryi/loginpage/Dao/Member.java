@@ -1,13 +1,21 @@
 package kroryi.loginpage.Dao;
 
 public class Member {
-    private String name, id, pw, email;
+    private String name, id, pw, email, select;
 
     public Member(String name, String id, String pw, String email) {
         this.name = name;
         this.id = id;
         this.pw = pw;
         this.email = email;
+    }
+
+    public String getSelect() {
+        return select;
+    }
+
+    public void setSelect(String select) {
+        this.select = select;
     }
 
     public String getName() {

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 public class SceneManager {
 
+    private static Parent root;
     private static Stage primaryStage;
 
     public static void setPrimaryStage(Stage stage){
@@ -17,7 +18,7 @@ public class SceneManager {
     public static void switchScene(String fxmlPath, String title){
         try{
             FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
-            Parent root = loader.load();
+            root = loader.load();
 
 //            root.setTop(MenuManager.getMenuBar()); 지원 않함.
             // BorderPane로 대체해서 사용

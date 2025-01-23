@@ -1,5 +1,8 @@
 package kroryi.loginpage.Dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,15 +25,28 @@ public class MyDB {
     }
 
     public static int chkIdPw(String id, String pw) {
+        String query = "SELECT * FROM member WHERE id = ?";
         int result = 0;
+        try(
+                Connection conn = getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(query)
+                ){
 
-        for (Member m : listMember) {
-            if (m.getId().equals(id)) {
-                result += 1;
-                if (m.getPw().equals(pw)) {
+            pstmt.setString(1, id);
+            try(ResultSet rs = pstmt.executeQuery()) {
+                if(rs.next()) {
                     result += 1;
+                    if(pw.equals(rs.getString("pw"))) {
+                        result += 1;
+                    }
                 }
+
+            }catch (Exception e){
+                e.printStackTrace();
             }
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return result;
     }
@@ -62,6 +78,7 @@ public class MyDB {
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)
         ) {
+            listMember.clear();
             while (resultSet.next()) {
                 listMember.add(new Member(
                         resultSet.getString("name"),
@@ -106,6 +123,29 @@ public class MyDB {
 //            }
 //        }
 //        System.out.println("회원정보 수정 ID:" + member.getId() + "찾을 수 없음.");
+
     }
+
+    public static void deleteMember(Member member) {
+
+        String sql = "DELETE FROM member WHERE id = ?";
+        try(
+                Connection conn = getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)
+                ){
+            pstmt.setString(1, member.getId());
+            pstmt.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public static ObservableList<Member> getObservableListMember() {
+        List<Member> members = getListMember(); // List<Member>를
+        return FXCollections.observableArrayList(members);
+        // List<Member>을 ObservableList로 변환
+    }
+
 
 }

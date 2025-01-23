@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import kroryi.loginpage.Dao.MyDB;
 import kroryi.loginpage.SceneManager;
 import kroryi.loginpage.Service.CommService;
 import kroryi.loginpage.Service.CommonServiceImpl;
@@ -43,18 +44,21 @@ public class LoginController {
     @FXML
     protected void onLoginBtnClick(ActionEvent event) {
         System.out.println("로그인 버튼 실행");
-        loginService = new LoginServiceImpl();
+        int result = MyDB.chkIdPw(tfIdField.getText(), tfPwField.getText());
 
-        switch (loginService.LoginProc(root)) {
+        switch (result) {
             case 0:
                 System.out.println("id가 없는 경우");
+                tfIdField.clear();
                 break;
             case 1:
                 System.out.println("아이디는 맞다");
+                tfPwField.clear();
                 break;
 
             case 2:
                 System.out.println("id,pw가 맞다.");
+                SceneManager.switchScene("list-view.fxml","목록보기");
                 break;
 
         }
